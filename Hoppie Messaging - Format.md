@@ -49,8 +49,8 @@ MRN = **3** (Relabels LRBL's MIN)
 
 # Response Requirements Key
 
-![[chrome_lDhKX6XOlx.png]]
+![chrome_lDhKX6XOlx](chrome_lDhKX6XOlx.png)
 
 # Example MIN and MRN Correlation Sequences
 
-![[chrome_SvfDA9SNAh.png]]
+![chrome_SvfDA9SNAh](chrome_SvfDA9SNAh.png)
