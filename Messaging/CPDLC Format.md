@@ -1,23 +1,20 @@
-
-# Foreword
+## Foreword
 
 For the most part (from what I've seen), the Hoppie ACARS follows the FAA Guidance Material for ATS Data Link Services pretty perfectly. It follows the same UL (Uplink) & DL (Downlink) templates whereas the logon has been simplified.
 
-# Format Skeleton
+## 🩻 Format Skeleton
 
-##### `/data2/{1}/{2}/{3}/{4}`
+##### `/data2/{min}/{mrn}/{res}/{elem}`
 
 | Parameter | Description |
 | -- | -- |
 | `data2` | Common prefix used in all CPDLC Messages |
-| `{1}` | **MIN (Message Identification Number)**: Refer to [MINs & MRNs - What are they?](#MINs%20&%20MRNs%20-%20What%20are%20they?) |
-| `{2}` | **MRN (Message Reference Number)**: Refer to [MINs & MRNs - What are they?](#MINs%20&%20MRNs%20-%20What%20are%20they?) |
-| `{3}` | **Response**: Refer to [Response Requirements Key](#Response%20Requirements%20Key) |
-| `{4}` | **Message Element**: Page 53 onwards of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)
+| `{min}` | **MIN (Message Identification Number)**: Refer to [MINs & MRNs - What are they?](#MINs%20&%20MRNs%20-%20What%20are%20they?) |
+| `{mrn}` | **MRN (Message Reference Number)**: Refer to [MINs & MRNs - What are they?](#MINs%20&%20MRNs%20-%20What%20are%20they?) |
+| `{res}` | **Response**: Refer to [Response Requirements Key](#Response%20Requirements%20Key) |
+| `{elem}` | **Message Element**: Page 53 onwards of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)
 
-# An Example Hoppie ACARS Exchange:
-
----
+## 🗣️ Example Hoppie ACARS Exchange:
 
 (LRBL->SWR160)
 ##### `/data2/3//WU/PROCEED DIRECT TO @UDROS`
@@ -28,7 +25,7 @@ For the most part (from what I've seen), the Hoppie ACARS follows the FAA Guidan
 
 ---
 
-(SWR160->LRBL) (Response to MIN 3)
+(SWR160->LRBL) (**Response to MIN 3**)
 ##### `/data2/8/3/N/WILCO`
 
 MRN = **3** (Relabels LRBL's MIN)
@@ -39,17 +36,17 @@ MRN = **3** (Relabels LRBL's MIN)
 
 
 ---
-# MINs & MRNs - What are they?
+## MINs & MRNs - What are they?
 
 **MIN (Message Identification Number)** - A unique identifier that is assigned to every uplink and downlink message during each CPDLC connection. MINs for uplink messages will be assigned by the ground system, and those for downlink messages by the avionics. MINs ***should be*** assigned sequentially to each uplink message within each CPDLC connection by the ground system. **Some, but not all, avionics systems will assign MINs to downlink messages sequentially**
 
 **MRN (Message Reference Number)** - A number used to respond to a message. When responding to a message, the MIN from that message is included, relabeled as the MRN. This relates responses to the messages that prompted them ([ATS Data link Services in NAT Airspace - 5.4.2](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)).
 
 
-# Response Requirements Key
+## Response Requirements Key
 
 ![chrome_lDhKX6XOlx](img/chrome_lDhKX6XOlx.png)
 
-# Example MIN and MRN Correlation Sequences
+## Example MIN and MRN Correlation Sequences
 
 ![chrome_SvfDA9SNAh](img/chrome_SvfDA9SNAh.png)
