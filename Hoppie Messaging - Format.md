@@ -16,7 +16,9 @@ For the most part (from what I've seen), the Hoppie ACARS follows the FAA Guidan
 | `{3}` | **Response**: Refer to [[Hoppie Messaging - Format#Response Requirements Key]] |
 | `{4}` | **Message Element**: Page 53 onwards of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)
 
-### An Example Hoppie ACARS Exchange:
+# An Example Hoppie ACARS Exchange:
+
+---
 
 (LRBL->SWR160)
 ##### `/data2/3//WU/PROCEED DIRECT TO @UDROS`
@@ -37,17 +39,18 @@ MRN = **3** (Relabels LRBL's MIN)
 ***WILCO*** = Message Element: Will close the uplink message
 
 
-
-### MINs & MRNs - What are they?
+---
+# MINs & MRNs - What are they?
 
 **MIN (Message Identification Number)** - A unique identifier that is assigned to every uplink and downlink message during each CPDLC connection. MINs for uplink messages will be assigned by the ground system, and those for downlink messages by the avionics. MINs ***should be*** assigned sequentially to each uplink message within each CPDLC connection by the ground system. **Some, but not all, avionics systems will assign MINs to downlink messages sequentially**
 
 **MRN (Message Reference Number)** - A number used to respond to a message. When responding to a message, the MIN from that message is included, relabeled as the MRN. This relates responses to the messages that prompted them ([ATS Data link Services in NAT Airspace - 5.4.2](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)).
 
 
-### Response Requirements Key
+# Response Requirements Key
+
 ![[chrome_lDhKX6XOlx.png]]
 
-### Example MIN and MRN Correlation Sequences
+# Example MIN and MRN Correlation Sequences
 
 ![[chrome_SvfDA9SNAh.png]]
