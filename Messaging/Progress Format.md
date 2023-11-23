@@ -11,3 +11,5 @@
 | `{off}` | Takeoff Time |
 | `{on}` | Landing Time |
 | `{in}` | Doors Open Time? |
+
+All times are formatted as **HHMM**

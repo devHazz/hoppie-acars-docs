@@ -1,9 +1,5 @@
 # CPDLC Format
 
-## Foreword
-
-For the most part (from what I've seen), the Hoppie ACARS follows the FAA Guidance Material for ATS Data Link Services pretty perfectly. It follows the same UL (Uplink) & DL (Downlink) templates whereas the logon has been simplified.
-
 ## 🩻 Format Skeleton
 
 ##### `/data2/{min}/{mrn}/{res}/{elem}`
@@ -16,26 +12,44 @@ For the most part (from what I've seen), the Hoppie ACARS follows the FAA Guidan
 | `{res}` | **Response**: Refer to [Response Requirements Key](#Response%20Requirements%20Key) |
 | `{elem}` | **Message Element**: Page 53 onwards of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf)
 
+## Logon
+
+Hoppie's ACARS System has a simplified login protocol. The avionic system (Downlink) sends a CPDLC Message with a **Response Required** (**Y**) type and packet content of `REQUEST LOGON`
+
+The uplink system will then respond with a CPDLC message which could include:
+ - A message with a **NE attribute (which requires an operational response)** with a packet content of `LOGON ACCEPTED` which shows the uplink is ready to accept messages.
+or
+ - A message with a **NE attribute (which requires an operational response)** with a usual packet content of `UNABLE` which shows the uplink station cannot accept messages.
+
 ## 🗣️ Example Hoppie ACARS Exchange:
 
-(LRBL->SWR160)
-##### `/data2/3//WU/PROCEED DIRECT TO @UDROS`
+```
+(From) -> (To):
+LRBL -> SWR160
 
-**WU** = Response Type: Wilco/Unable
+Packet Content:
+/data2/3//WU/PROCEED DIRECT TO @UDROS
 
-***PROCEED DIRECT TO @UDROS*** = Message Element: These elements can be found from Page 53 of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf) and reference the response required (if any). UDROS is prefixed with a `@` symbol to show as a variable field.
+MIN=3
+```
+
+`WU` = Requires a Wilco/Unable Response
+`PROCEED DIRECT TO @UDROS`= Message Element: These elements can be found from Page 53 of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf) and reference the response required (if any). UDROS is prefixed with a `@` symbol to show as a variable field.
 
 ---
+```
+(From) -> (To):
+SWR160 -> LRBL
 
-(SWR160->LRBL) (**Response to MIN 3**)
-##### `/data2/8/3/N/WILCO`
+Packet Content:
+/data2/8/3/N/WILCO
 
-MRN = **3** (Relabels LRBL's MIN)
+MIN=8
+MRN=3 (Relabels LRBL's MIN)
+```
 
-**N** = Response Type: Response not required
-
-***WILCO*** = Message Element: Will close the uplink message
-
+`N` = Response not required
+`WILCO` = Message Element: Will close the uplink message
 
 ---
 ## MINs & MRNs - What are they?

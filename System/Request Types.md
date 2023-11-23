@@ -1,4 +1,4 @@
-## 🔎 Request Type Attributes
+# 🔎 Request Types
 
 
 | Request Type (11) | Attributes |
