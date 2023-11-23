@@ -17,9 +17,9 @@
 Hoppie's ACARS System has a simplified login protocol. The avionic system (Downlink) sends a CPDLC Message with a **Response Required** (**Y**) type and packet content of `REQUEST LOGON`
 
 The uplink system will then respond with a CPDLC message which could include:
- - A message with a **NE attribute (which requires an operational response)** with a packet content of `LOGON ACCEPTED` which shows the uplink is ready to accept messages.
+ - A message with a **NE attribute (which requires an operational response)** with a packet content of `LOGON ACCEPTED` which shows the uplink is ready to accept messages.  
 or
- - A message with a **NE attribute (which requires an operational response)** with a usual packet content of `UNABLE` which shows the uplink station cannot accept messages.
+ - A message with a **NE attribute (which requires an operational response)** with a usual packet content of `UNABLE` which shows the uplink station cannot accept messages.  
 
 ## 🗣️ Example Hoppie ACARS Exchange:
 
@@ -33,7 +33,7 @@ Packet Content:
 MIN=3
 ```
 
-`WU` = Requires a Wilco/Unable Response
+`WU` = Requires a Wilco/Unable Response  
 `PROCEED DIRECT TO @UDROS`= Message Element: These elements can be found from Page 53 of [ATS Data link Services in NAT Airspace](https://www.notams.faa.gov/downloads/CPDLC_ver_10.pdf) and reference the response required (if any). UDROS is prefixed with a `@` symbol to show as a variable field.
 
 ---
@@ -48,7 +48,7 @@ MIN=8
 MRN=3 (Relabels LRBL's MIN)
 ```
 
-`N` = Response not required
+`N` = Response not required  
 `WILCO` = Message Element: Will close the uplink message
 
 ---
